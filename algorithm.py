@@ -43,18 +43,20 @@ class PersonR():
         for user in self.entry.keys():
             recommended_fields = self.recommend_fields_for_user(user)
             user_recommendations[user] = recommended_fields
-            print(f"Usuário {user} deve considerar os seguintes campos:")
+            print(f"{user} deve considerar os seguintes campos:")
             for field in recommended_fields:
                 print(f"- {field}")
             print()
         
         # Criar um DataFrame com as recomendações
-        df_recommendations = pd.DataFrame(user_recommendations)
+        df_recommendations = pd.DataFrame(user_recommendations).transpose()
+        df_recommendations.columns = ['Campo Recomendado 1', 'Campo Recomendado 2', 'Campo Recomendado 3']
+        df_recommendations.index.name = 'Usuário'  # Define o nome da coluna de índice
         
         # Salvar o DataFrame em um arquivo CSV
         df_recommendations.to_csv('recomendacoes_campos_por_usuario.csv', index=False)
 
-# Dados dos usuários (exemplo)
+#Dados dos usuários (exemplo)
 Entry = {
     "Usuario1": [5, 4, 3, 2, 4, 5, 3, 2, 4],
     "Usuario2": [3, 2, 4, 5, 3, 3, 4, 5, 2],
@@ -62,7 +64,5 @@ Entry = {
     "Usuario4": [2, 3, 5, 4, 2, 2, 5, 4, 3],
     "Usuario5": [5, 4, 3, 2, 4, 5, 3, 2, 4]
 }
-
-# Instanciar a classe e executar o sistema de recomendação
 person_r = PersonR(Entry)
 person_r.finish()
