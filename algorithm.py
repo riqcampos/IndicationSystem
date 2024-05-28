@@ -57,7 +57,7 @@ class PersonR():
         df_recommendations.to_csv('recomendacoes_campos_por_usuario.csv', index=False)
 
 #Dados dos usuários (exemplo)
-Entry = {
+''''Entry = {
     "Usuario1": [5, 4, 3, 2, 4, 5, 3, 2, 4],
     "Usuario2": [3, 2, 4, 5, 3, 3, 4, 5, 2],
     "Usuario3": [4, 5, 2, 3, 5, 4, 2, 3, 5],
@@ -65,4 +65,4 @@ Entry = {
     "Usuario5": [5, 4, 3, 2, 4, 5, 3, 2, 4]
 }
 person_r = PersonR(Entry)
-person_r.finish()
+person_r.finish()'''
